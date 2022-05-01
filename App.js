@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ThemeProvider } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import Theme from "./src/theme";
+import RootNavigation from "./src/navigations/Index";
+import { persistor, store } from "./src/redux/store";
+import { SafeAreaView } from "react-native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <>
+      {/* Mobile Status bar config */}
       <StatusBar style="auto" />
-    </View>
+      {/* Redux data provider */}
+      <Provider store={store}>
+        {/* Persist (store) data in AsyncStorage  */}
+        <PersistGate loading={null} persistor={persistor}>
+          {/* Default Theme overrides with our custom Theme */}
+          <ThemeProvider theme={Theme}>
+            {/* To provide safety wrapper to content from top notch and status bar */}
+            <SafeAreaView style={{ flex: 1 }}>
+              <RootNavigation />
+            </SafeAreaView>
+          </ThemeProvider>
+        </PersistGate>
+      </Provider>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
