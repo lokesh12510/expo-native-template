@@ -1,4 +1,3 @@
-import { ThemeProvider } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -6,6 +5,8 @@ import Theme from "./src/theme";
 import RootNavigation from "./src/navigations/Index";
 import { persistor, store } from "./src/redux/store";
 import { SafeAreaView } from "react-native";
+import { ThemeProvider } from "react-native-paper";
+import { useEffect } from "react";
 
 export default function App() {
   return (

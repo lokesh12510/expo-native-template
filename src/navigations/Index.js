@@ -6,6 +6,7 @@ import { CustomerTabsScreen } from "./CustomerStack";
 import AuthStackScreen from "./AuthStack";
 import { CookDrawerScreen } from "./CookStack";
 import { NavigationContainer } from "@react-navigation/native";
+import { loading } from "../redux/auth/authSlice";
 
 const RootStack = () => {
   const {
@@ -25,7 +26,7 @@ const RootStack = () => {
     </View>
   ) : authToken && role === "ROLE_CUSTOMER" ? (
     <CustomerTabsScreen />
-  ) : authToken && role === "ROLE_CHEF" ? (
+  ) : (authToken && role === "ROLE_CHEF") || role === "ROLE_ADMIN" ? (
     <CookDrawerScreen />
   ) : (
     !isLoading && <AuthStackScreen />

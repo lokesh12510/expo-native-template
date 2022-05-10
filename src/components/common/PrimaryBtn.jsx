@@ -1,19 +1,29 @@
 import React from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
-import Theme from "../../theme";
+import { ActivityIndicator } from "react-native-paper";
+import Theme from "./../../theme/index";
 
 const { colors, sizes, fonts } = Theme;
 
 export default function PrimaryBtn(props) {
-  const { onPress, title = "Save" } = props;
+  const { onPress, title = "Save", isLoading = false, disabled } = props;
   return (
     <View>
       <Pressable
-        style={({ pressed }) => [styles.container, pressed && styles.pressed]}
+        disabled={disabled}
+        style={({ pressed }) => [
+          styles.container,
+          pressed && styles.pressed,
+          disabled && { backgroundColor: colors.darkLight, elevation: 0 },
+        ]}
         onPress={onPress}
-        android_ripple={"#000"}
+        android_ripple={{ color: "#ccc", foreground: true }}
       >
-        <Text style={styles.text}>{title}</Text>
+        {!isLoading ? (
+          <Text style={styles.text}>{title}</Text>
+        ) : (
+          <ActivityIndicator color={"#fff"} />
+        )}
       </Pressable>
     </View>
   );

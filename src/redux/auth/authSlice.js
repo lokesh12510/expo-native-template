@@ -32,6 +32,30 @@ const AuthSlice = createSlice({
       }
     );
     builder.addMatcher(
+      authApi.endpoints.authCustomerRegister.matchFulfilled,
+      (state) => {
+        state.loading = false;
+      }
+    );
+    builder.addMatcher(
+      authApi.endpoints.authCustomerLogin.matchRejected,
+      (state) => {
+        state.loading = false;
+      }
+    );
+    builder.addMatcher(
+      authApi.endpoints.authCustomerRegister.matchRejected,
+      (state) => {
+        state.loading = false;
+      }
+    );
+    builder.addMatcher(
+      authApi.endpoints.authCookLogin.matchRejected,
+      (state) => {
+        state.loading = false;
+      }
+    );
+    builder.addMatcher(
       authApi.endpoints.authCookLogin.matchFulfilled,
       (state, { payload }) => {
         state.authToken = payload.token;

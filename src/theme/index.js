@@ -1,4 +1,4 @@
-import { DefaultTheme } from "@react-navigation/native";
+import { DefaultTheme, configureFonts } from "react-native-paper";
 import { Dimensions } from "react-native";
 
 // Device width & height
@@ -7,7 +7,7 @@ const { width, height } = Dimensions.get("window");
 const sizes = {
   // global sizes
   base: 8,
-  font: 14,
+  font: 16,
   radius: 5,
   radius1: 10,
   radius2: 50,
@@ -24,6 +24,8 @@ const sizes = {
   h2: 22,
   h3: 20,
   h4: 18,
+  h5: 16,
+  h6: 14,
   body1: 35,
   body2: 20,
   body3: 16,
@@ -44,6 +46,8 @@ const fonts = {
   h2: { fontSize: sizes.h2, lineHeight: 30 },
   h3: { fontSize: sizes.h3, lineHeight: 22 },
   h4: { fontSize: sizes.h4, lineHeight: 22 },
+  h5: { fontSize: sizes.h5, lineHeight: 20 },
+  h6: { fontSize: sizes.h6, lineHeight: 18 },
   body1: {
     fontSize: sizes.body1,
     lineHeight: 36,

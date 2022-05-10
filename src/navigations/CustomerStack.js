@@ -7,6 +7,7 @@ import { Text, View } from "react-native";
 import Theme from "./../theme/index";
 import Home from "./../screens/customer/home/Home";
 import Profile from "./../screens/customer/profile/Profile";
+import Routes from "./../constants/routes";
 
 const { primary, darkgray } = Theme.colors;
 
@@ -87,7 +88,7 @@ export const CustomerTabsScreen = () => {
         }}
       />
       <customerTabs.Screen
-        name={Routes.customer.Profile}
+        name={Routes.customer.profile}
         component={Profile}
         options={{
           tabBarIcon: ({ color, size }) => (
